@@ -8,11 +8,15 @@ public class SumAndAverage {
 
 	public void operator() {
 
-		int[] arr = new int[5];
+		int score = 0;
 
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print("Please Input Five Score : ");
-			int score = input.nextInt();
+		System.out.print("Please Input How Many Scores: ");
+		int count = input.nextInt();
+		int[] arr = new int[count];
+
+		for (int i = 0; i <= count; i++) {
+			System.out.print("Please Input " + (i + 1) + "th" + " Score : ");
+			score = input.nextInt();
 
 			arr[i] = score;
 		}
@@ -29,7 +33,7 @@ public class SumAndAverage {
 		}
 
 		average = sum / arr.length;
-		
+
 		System.out.println("========================================================");
 		System.out.println("Sum Is: " + sum);
 		System.out.println("Average Is: " + average);
