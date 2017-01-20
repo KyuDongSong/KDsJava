@@ -11,7 +11,7 @@ public class GradeCalculator {
 
 		showInputMessageManage();
 		int manage = sc.nextInt();
-
+//test
 		showInputMessageMath();
 		int math = sc.nextInt();
 
