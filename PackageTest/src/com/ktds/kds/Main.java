@@ -9,6 +9,6 @@ public class Main {
 
 		Doctor doctor = new Doctor();
 		doctor.hello();
-
+		System.out.println("test");
 	}
 }
