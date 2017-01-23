@@ -24,7 +24,7 @@ public class SumAndAverage {
 		makeAndShowSumAndAverage(arr);
 	}
 
-	public void makeAndShowSumAndAverage(int[] arr) {
+	private void makeAndShowSumAndAverage(int[] arr) {
 		double average = 0;
 		int 	sum = 0;
 

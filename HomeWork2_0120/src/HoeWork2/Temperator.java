@@ -14,7 +14,7 @@ public class Temperator {
 		chooseTemperator(number);
 	}
 
-	public void chooseTemperator(int number) {
+	private void chooseTemperator(int number) {
 		if (number == 1) {
 			System.out.print("Please Input Celsius: ");
 			double celsius = input.nextInt();
@@ -28,7 +28,7 @@ public class Temperator {
 		}
 	}
 
-	public double showCelsiusToFahrenheit(double celsius) {
+	private double showCelsiusToFahrenheit(double celsius) {
 
 		double fahrenheit = ((celsius * 1.8) + 32);
 
@@ -39,7 +39,7 @@ public class Temperator {
 		return fahrenheit;
 	}
 
-	public double showFarenheitToCelsiut(double fahrenheit) {
+	private double showFarenheitToCelsiut(double fahrenheit) {
 
 		double celsius = ((fahrenheit - 32) / 1.8);
 

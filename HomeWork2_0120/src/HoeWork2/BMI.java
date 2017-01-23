@@ -16,7 +16,7 @@ public class BMI {
 		makeBMI(height, weight);
 	}
 
-	public void makeBMI(double height, double weight) {
+	private void makeBMI(double height, double weight) {
 		double bmi = weight / ((height * 0.01) * (height * 0.01));
 
 		System.out.println("========================================================");
