@@ -26,6 +26,9 @@ public class Main {
 			} else if(choose == 4){
 				System.out.println("EXIT THE PROGRAM..");
 				break;
+			} else {
+				System.out.println("WRONG INPUT!!(Input 1 ~ 4)");
+				choose = 0;
 			}
 			
 		}
