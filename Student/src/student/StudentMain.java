@@ -8,6 +8,9 @@ public class StudentMain {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		int choice = 0;
+		
+		//kd.name = "송규동";
+		kd.setName("송규동");
 
 		kd.introduce();
 		while (choice != 6) {
