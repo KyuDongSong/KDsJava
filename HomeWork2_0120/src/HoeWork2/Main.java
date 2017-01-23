@@ -12,6 +12,7 @@ public class Main {
 		
 		while(choose != 4){
 			
+			@SuppressWarnings("resource")
 			Scanner input = new Scanner(System.in);
 			System.out.println("Choose The Program(1. SumAndAverage / 2. Temperator / 3. BMI / 4. EXIT)");
 			choose = input.nextInt();

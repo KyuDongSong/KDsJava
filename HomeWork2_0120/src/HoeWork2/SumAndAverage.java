@@ -14,7 +14,7 @@ public class SumAndAverage {
 		int count = input.nextInt();
 		int[] arr = new int[count];
 
-		for (int i = 0; i <= count; i++) {
+		for (int i = 0; i < count; i++) {
 			System.out.print("Please Input " + (i + 1) + "th" + " Score : ");
 			score = input.nextInt();
 
@@ -26,7 +26,7 @@ public class SumAndAverage {
 
 	public void makeAndShowSumAndAverage(int[] arr) {
 		double average = 0;
-		int sum = 0;
+		int 	sum = 0;
 
 		for (int i = 0; i < arr.length; i++) {
 			sum += arr[i];
