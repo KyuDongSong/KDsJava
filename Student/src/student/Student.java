@@ -8,10 +8,38 @@ public class Student {
 
 	private int score = 0;
 	private int tired = 0;
-	
+
 	// name instance field 갱신
-	public void setName(String name){
-		this.name = name;
+	public void setName(String name) {
+		// parameter로 전달된 data의 길이가 3 이면 변경한다.
+		if (name.length() == 3) {
+			// inatance field인 name에 parameter인 name을 할당한다.
+			this.name = name;
+		}
+	}
+
+	public void setHeight(int height) {
+		if (height > 170) {
+			this.height = height;
+		}
+	}
+
+	public void setWeight(int weight) {
+		if (weight < 70) {
+			this.weight = weight;
+		}
+	}
+
+	public void setScore(int score) {
+		if (score != 0) {
+			this.score = score;
+		}
+	}
+
+	public void setTired(int tired) {
+		if (tired != 0) {
+			this.tired = tired;
+		}
 	}
 
 	public void introduce() {

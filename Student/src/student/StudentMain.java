@@ -11,6 +11,8 @@ public class StudentMain {
 		
 		//kd.name = "송규동";
 		kd.setName("송규동");
+		kd.setHeight(180);
+		kd.setScore(50);
 
 		kd.introduce();
 		while (choice != 6) {
