@@ -1,6 +1,6 @@
 package vendingMachine.person;
 
-import vendingMachine.machine.Machine;
+import vendingMachine.machine.Machineskd;
 
 /**
  * 자판기에서 음료를 고른다 동전을 투입한다. 음료를 받는다. 잔돈을 받는다.
@@ -10,12 +10,12 @@ import vendingMachine.machine.Machine;
  * @author Admin
  *
  */
-public class Person {
+public class Personskd {
 
 	private int money;
 	private int drink;
 
-	public Person(int money, int drink) {
+	public Personskd(int money, int drink) {
 		setMoney(money);
 		setDrink(drink);
 		
@@ -39,7 +39,7 @@ public class Person {
 		this.money = money;
 	}
 
-	public void chooseDrink(int input, Machine machine) {
+	public void chooseDrink(int input, Machineskd machine) {
 		if (input == 1) {
 			machine.sellCola(this);
 			this.drink++;

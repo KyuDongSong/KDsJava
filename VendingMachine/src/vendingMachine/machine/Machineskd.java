@@ -1,6 +1,6 @@
 package vendingMachine.machine;
 
-import vendingMachine.person.Person;
+import vendingMachine.person.Personskd;
 
 /**
  * 음료를 제공한다.
@@ -12,7 +12,7 @@ import vendingMachine.person.Person;
  * @author Admin
  *
  */
-public class Machine {
+public class Machineskd {
 
 	private final int COLA = 1000;
 	private final int FANTA = 800;
@@ -23,7 +23,7 @@ public class Machine {
 	private int stockFanta;
 	private int stockSprite;
 
-	public Machine(int money, int cola, int fanta, int sprite) {
+	public Machineskd(int money, int cola, int fanta, int sprite) {
 		System.out.println("Welcome VendingMachine!!");
 
 		setStockMoney(money);
@@ -66,21 +66,21 @@ public class Machine {
 		this.stockSprite = stockSprite;
 	}
 
-	public void sellCola(Person person) {
+	public void sellCola(Personskd person) {
 		this.stockCola--;
 		person.payMoney(COLA);
 
 		this.stockMoney += COLA;
 	}
 
-	public void sellFanta(Person person) {
+	public void sellFanta(Personskd person) {
 		this.stockFanta--;
 		person.payMoney(FANTA);
 
 		this.stockMoney += FANTA;
 	}
 
-	public void sellSprite(Person person) {
+	public void sellSprite(Personskd person) {
 		this.stockSprite--;
 		person.payMoney(SPRITE);
 

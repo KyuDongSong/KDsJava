@@ -1,15 +1,15 @@
 package vendingMachine;
 
-import vendingMachine.machine.Machine;
-import vendingMachine.person.Person;
+import vendingMachine.machine.Machineskd;
+import vendingMachine.person.Personskd;
 
 import java.util.Scanner;
 
-public class VendingMachine {
+public class VendingMachineSKD {
 
 	public void start() {
-		Person person = new Person(5000, 0);
-		Machine machine = new Machine(500000, 100, 100, 100);
+		Personskd person = new Personskd(5000, 0);
+		Machineskd machine = new Machineskd(500000, 100, 100, 100);
 		Scanner input = new Scanner(System.in);
 		int num = 0;
 
@@ -26,6 +26,6 @@ public class VendingMachine {
 	}
 
 	public static void main(String[] args) {
-		new VendingMachine().start();
+		new VendingMachineSKD().start();
 	}
 }
