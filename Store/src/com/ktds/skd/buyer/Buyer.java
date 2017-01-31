@@ -1,5 +1,6 @@
 package com.ktds.skd.buyer;
 
+import com.ktds.skd.vo.BasketVO;
 import com.ktds.skd.seller.Seller;
 
 /**
@@ -9,60 +10,18 @@ import com.ktds.skd.seller.Seller;
  *
  */
 public class Buyer {
-	/**
-	 * 상품 개수
-	 */
-	private int productQuantity;
 
-	/**
-	 * 구매자가 갖고있는 금액
-	 */
-	private int money;
+	private BasketVO basketVO;
 
-	
-	public Buyer(int productQuantity, int money){
+	public Buyer(int productQuantity, int money) {
+		basketVO = new BasketVO();
 		System.out.println("구매자를 생성합니다!");
 		// 초기값 생성
-		setProductQuantity(productQuantity);
-		setMoney(money);
-		
-		//현황 출력
+		basketVO.setProductQuantity(productQuantity);
+		basketVO.setMoney(money);
+
+		// 현황 출력
 		System.out.println(this);
-	}
-	/**
-	 * 상품 개수 반환(출력용)
-	 * 
-	 * @return
-	 */
-	public int getProductQuantity() {
-		return productQuantity;
-	}
-
-	/**
-	 * 상품 개수 초기화 또는 갱신
-	 * 
-	 * @param productQuantity
-	 */
-	public void setProductQuantity(int productQuantity) {
-		this.productQuantity = productQuantity;
-	}
-
-	/**
-	 * 구매자가 가진 돈을 반환 (출력용)
-	 * 
-	 * @return
-	 */
-	public int getMoney() {
-		return money;
-	}
-
-	/**
-	 * 구매자가 갖고 있는 돈 초기화 또는 갱신
-	 * 
-	 * @param money
-	 */
-	public void setMoney(int money) {
-		this.money = money;
 	}
 
 	/**
@@ -70,7 +29,7 @@ public class Buyer {
 	 */
 	public void buy(Seller seller) {
 		seller.sell(this);
-		this.productQuantity++;
+		basketVO.plusProductQuantity();
 	}
 
 	/**
@@ -80,7 +39,7 @@ public class Buyer {
 	 *            : 지불할 금액
 	 */
 	public void pay(int money) {
-		this.money -= money;
+		basketVO.minusMoney(money);
 	}
 
 	/**
@@ -89,7 +48,8 @@ public class Buyer {
 	@Override
 	public String toString() {
 
-		String message = String.format("구매한 상품 개수 : %d\n구매자가 가진 금액 : %d", this.productQuantity, this.money);
+		String message = String.format("구매한 상품 개수 : %d\n구매자가 가진 금액 : %d", basketVO.getProductQuantity(),
+				basketVO.getMoney());
 		return message;
 	}
 }
