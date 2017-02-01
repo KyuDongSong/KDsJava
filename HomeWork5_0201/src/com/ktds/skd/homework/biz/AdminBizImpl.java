@@ -6,7 +6,8 @@ import java.util.Scanner;
 import com.ktds.skd.homework.dao.AdminDao;
 import com.ktds.skd.homework.dao.AdminDaoImpl;
 import com.ktds.skd.homework.vo.AdminVO;
-import com.ktds.skd.homework.vo.GradeVO;
+
+import static com.ktds.skd.homework.GradeConst.*;;
 
 public class AdminBizImpl implements AdminBiz {
 
@@ -68,22 +69,22 @@ public class AdminBizImpl implements AdminBiz {
 		System.out.print("승진할 사원의 번호를 입력하세요.");
 		int staffNumber = input.nextInt();
 
-		GradeVO gradeVO = gradeDao.findStaffNumber(staffNumber);
+		AdminVO adminVO = adminDao.findStaffNumber(staffNumber);
 
-		String grade = gradeDao.
+		String grade = adminVO.getGrade();
 
-		if (grade == gradeVO.BOSS) {
+		if (grade == BOSS) {
 			System.out.println("사장님.. 진급할 수 없습니다..");
-		} else if (grade == gradeVO.WORKER) {
-			gradeVO.setGrade(gradeVO.MANAGER);
-		} else if (grade == gradeVO.MANAGER) {
-			adminVO.setGrade(gradeVO.TEAM_CHIEF);
-		} else if (grade == gradeVO.TEAM_CHIEF) {
-			adminVO.setGrade(gradeVO.DEPART_CHIEF);
-		} else if (grade == gradeVO.DEPART_CHIEF) {
-			adminVO.setGrade(gradeVO.HEAD_CHIEF);
-		} else if (grade == gradeVO.HEAD_CHIEF) {
-			adminVO.setGrade(gradeVO.BOSS);
+		} else if (grade == WORKER) {
+			adminVO.setGrade(MANAGER);
+		} else if (grade == MANAGER) {
+			adminVO.setGrade(TEAM_CHIEF);
+		} else if (grade == TEAM_CHIEF) {
+			adminVO.setGrade(DEPART_CHIEF);
+		} else if (grade == DEPART_CHIEF) {
+			adminVO.setGrade(HEAD_CHIEF);
+		} else if (grade == HEAD_CHIEF) {
+			adminVO.setGrade(BOSS);
 		}
 
 	}

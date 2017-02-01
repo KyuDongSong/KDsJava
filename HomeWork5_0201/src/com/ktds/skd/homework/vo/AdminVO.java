@@ -1,6 +1,6 @@
 package com.ktds.skd.homework.vo;
 
-import static com.ktds.skd.homework.vo.*;
+import static com.ktds.skd.homework.GradeConst.*;
 
 public class AdminVO {
 
@@ -8,16 +8,26 @@ public class AdminVO {
 	public int salary;
 	public String part;
 	public String grade;
-	
+
 	public String getGrade() {
 		return grade;
 	}
 
 	public void setGrade(String grade) {
-		GradeVO gradeVO;
-		this.grade = grade;
+		if (grade == WORKER) {
+			this.grade = grade;
+		} else if (grade == MANAGER) {
+			this.grade = grade;
+		} else if (grade == TEAM_CHIEF) {
+			this.grade = grade;
+		} else if (grade == DEPART_CHIEF) {
+			this.grade = grade;
+		} else if (grade == HEAD_CHIEF) {
+			this.grade = grade;
+		} else if (grade == BOSS) {
+			this.grade = grade;
+		}
 	}
-
 
 	public String getName() {
 		return name;

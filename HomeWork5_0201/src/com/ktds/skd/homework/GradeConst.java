@@ -1,7 +1,7 @@
-package com.ktds.skd.homework.vo;
+package com.ktds.skd.homework;
 
-public interface GradeVO {
-	
+public interface GradeConst {
+
 	public static final String WORKER = "사원";
 	public static final String MANAGER = "대리";
 	public static final String TEAM_CHIEF = "과장";
