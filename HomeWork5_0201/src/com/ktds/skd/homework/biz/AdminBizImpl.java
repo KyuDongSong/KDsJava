@@ -73,17 +73,17 @@ public class AdminBizImpl implements AdminBiz {
 
 		String grade = adminVO.getGrade();
 
-		if (grade == BOSS) {
+		if (grade.equals(BOSS)) {
 			System.out.println("사장님.. 진급할 수 없습니다..");
-		} else if (grade == WORKER) {
+		} else if (grade.equals(WORKER)) {
 			adminVO.setGrade(MANAGER);
-		} else if (grade == MANAGER) {
+		} else if (grade.equals(MANAGER)) {
 			adminVO.setGrade(TEAM_CHIEF);
-		} else if (grade == TEAM_CHIEF) {
+		} else if (grade.equals(TEAM_CHIEF)) {
 			adminVO.setGrade(DEPART_CHIEF);
-		} else if (grade == DEPART_CHIEF) {
+		} else if (grade.equals(DEPART_CHIEF)) {
 			adminVO.setGrade(HEAD_CHIEF);
-		} else if (grade == HEAD_CHIEF) {
+		} else if (grade.equals(DEPART_CHIEF)) {
 			adminVO.setGrade(BOSS);
 		}
 

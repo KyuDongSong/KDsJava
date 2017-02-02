@@ -5,28 +5,28 @@ import static com.ktds.skd.homework.GradeConst.*;
 public class AdminVO {
 
 	public String name;
-	public int salary;
 	public String part;
 	public String grade;
+	public int salary;
 
 	public String getGrade() {
 		return grade;
 	}
 
 	public void setGrade(String grade) {
-		if (grade == WORKER) {
+		if (grade.equals(WORKER)) {
 			this.grade = grade;
-		} else if (grade == MANAGER) {
+		} else if (grade.equals(MANAGER)) {
 			this.grade = grade;
-		} else if (grade == TEAM_CHIEF) {
+		} else if (grade.equals(TEAM_CHIEF)) {
 			this.grade = grade;
-		} else if (grade == DEPART_CHIEF) {
+		} else if (grade.equals(DEPART_CHIEF)) {
 			this.grade = grade;
-		} else if (grade == HEAD_CHIEF) {
+		} else if (grade.equals(HEAD_CHIEF)) {
 			this.grade = grade;
-		} else if (grade == BOSS) {
+		} else if (grade.equals(BOSS)) {
 			this.grade = grade;
-		}
+		} 
 	}
 
 	public String getName() {
