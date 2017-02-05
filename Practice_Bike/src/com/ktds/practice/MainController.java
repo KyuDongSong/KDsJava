@@ -4,26 +4,27 @@ import java.util.Scanner;
 
 import com.ktds.practice.biz.BikeBiz;
 import com.ktds.practice.biz.BikeBizImpl;
-import com.ktds.practice.vo.BikeVO;
 
 public class MainController {
 
 	public void start() {
+
 		BikeBiz bikeBiz = new BikeBizImpl();
-		BikeVO bikeVO = new BikeVO();
-		
+
 		Scanner input = new Scanner(System.in);
-		boolean temp = true;
-		int choice;
 
-		while (temp) {
-			System.out.println("어떤 자전거를 대여하겠습니까. // 0. 고급 / 1. 중급 / 2. 하급");
-			choice = input.nextInt();
+		// 대여 자전거 선택
+		System.out.println("========== Welcome To BikeRentalShop ==========");
+		System.out.println("자전거 선택(1. 고급 / 2. 중급 / 3. 기본)");
+		int choice = input.nextInt();
+		bikeBiz.choiceQuality(choice);
 
-			bikeVO =bikeBiz.rentBike(choice);
-			temp = bikeBiz.checkBike(bikeVO);
+		System.out.println("대여 시간을 입력하세요.");
+		int time = input.nextInt();
 
-		}
+		bikeBiz.returnBike(choice, time);
+		
+		input.close();
 
 	}
 

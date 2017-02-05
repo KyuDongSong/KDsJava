@@ -3,52 +3,96 @@ package com.ktds.practice.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ktds.practice.vo.BikeVO;
+import com.ktds.practice.vo.*;
 
 public class BikeDaoImpl implements BikeDao {
 
-	List<BikeVO> bikeList;
-	BikeVO bikeVO1;
-	BikeVO bikeVO2;
-	BikeVO bikeVO3;
+	private List<BikeShopVO> bikeList;
 
 	public BikeDaoImpl() {
-		bikeList = new ArrayList<BikeVO>();
-		bikeVO1 = new BikeVO();
-		bikeVO2 = new BikeVO();
-		bikeVO3 = new BikeVO();
+		bikeList = new ArrayList<BikeShopVO>();
 
-		bikeVO1.setMoney(5000);
-		bikeVO1.setStock(3);
-		setList(bikeVO1);
-		bikeVO2.setMoney(3000);
-		bikeVO2.setStock(3);
-		setList(bikeVO2);
-		bikeVO3.setMoney(1000);
-		bikeVO3.setStock(3);
-		setList(bikeVO3);
+		BikeShopVO bikeShopVO = new BikeShopVO();
+		BikeShopVO customerVO = new BikeShopVO();
 
+		bikeShopVO.setMoney(100000);
+		bikeShopVO.setStockOfHighQuality(3);
+		bikeShopVO.setStockOfMiddleQuality(3);
+		bikeShopVO.setStockOfLowQuality(3);
+
+		customerVO.setMoney(100000);
+
+		makeBikeList(bikeShopVO);
+		makeRentList(customerVO);
+	}
+
+	private void makeBikeList(BikeShopVO bikeShopVO) {
+		bikeList.add(bikeShopVO);
+	}
+
+	private void makeRentList(BikeShopVO customerVO) {
+		bikeList.add(customerVO);
 	}
 
 	@Override
-	public void rentBike(int index, BikeVO bikeVO) {
-		bikeList.set(index, bikeVO);
+	public List<BikeShopVO> rentBikeHighQuality() {
+		bikeList.get(0).setStockOfHighQuality((bikeList.get(0).getStockOfHighQuality() - 1));
+		bikeList.get(1).setStockOfHighQuality((bikeList.get(1).getStockOfHighQuality() + 1));
+
+		return bikeList;
 	}
 
 	@Override
-	public void returnBike(int index, BikeVO bikeVO) {
-		bikeList.set(index, bikeVO);
+	public List<BikeShopVO> rentBikeMiddleQuality() {
+		bikeList.get(0).setStockOfMiddleQuality((bikeList.get(0).getStockOfMiddleQuality() - 1));
+		bikeList.get(1).setStockOfMiddleQuality((bikeList.get(1).getStockOfMiddleQuality() + 1));
 
+		return bikeList;
 	}
 
 	@Override
-	public void setList(BikeVO inputBikeVO) {
-		bikeList.add(inputBikeVO);
+	public List<BikeShopVO> rentBikeLowQuality() {
+		bikeList.get(0).setStockOfLowQuality((bikeList.get(0).getStockOfLowQuality() - 1));
+		bikeList.get(1).setStockOfLowQuality((bikeList.get(1).getStockOfLowQuality() + 1));
 
+		return bikeList;
 	}
 
 	@Override
-	public List<BikeVO> getList() {
+	public List<BikeShopVO> returnBikeHighQuality(int pay) {
+		bikeList.get(0).setStockOfHighQuality((bikeList.get(0).getStockOfHighQuality() + 1));
+		bikeList.get(1).setStockOfHighQuality((bikeList.get(1).getStockOfHighQuality() - 1));
+
+		bikeList.get(0).setMoney(bikeList.get(0).getMoney() + pay);
+		bikeList.get(1).setMoney(bikeList.get(1).getMoney() - pay);
+
+		return bikeList;
+	}
+
+	@Override
+	public List<BikeShopVO> returnBikeMiddleQuality(int pay) {
+		bikeList.get(0).setStockOfMiddleQuality((bikeList.get(0).getStockOfMiddleQuality() + 1));
+		bikeList.get(1).setStockOfMiddleQuality((bikeList.get(1).getStockOfMiddleQuality() - 1));
+
+		bikeList.get(0).setMoney(bikeList.get(0).getMoney() + pay);
+		bikeList.get(1).setMoney(bikeList.get(1).getMoney() - pay);
+
+		return bikeList;
+	}
+
+	@Override
+	public List<BikeShopVO> returnBikeLowQuality(int pay) {
+		bikeList.get(0).setStockOfLowQuality((bikeList.get(0).getStockOfLowQuality() - 1));
+		bikeList.get(1).setStockOfLowQuality((bikeList.get(1).getStockOfLowQuality() + 1));
+
+		bikeList.get(0).setMoney(bikeList.get(0).getMoney() + pay);
+		bikeList.get(1).setMoney(bikeList.get(1).getMoney() - pay);
+
+		return bikeList;
+	}
+
+	@Override
+	public List<BikeShopVO> showList() {
 		return bikeList;
 	}
 

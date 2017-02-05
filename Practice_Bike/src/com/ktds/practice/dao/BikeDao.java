@@ -2,16 +2,17 @@ package com.ktds.practice.dao;
 
 import java.util.List;
 
-import com.ktds.practice.vo.BikeVO;
+import com.ktds.practice.vo.BikeShopVO;
 
 public interface BikeDao {
 
-	public void rentBike(int index, BikeVO bikeVO);
+	public List<BikeShopVO> rentBikeHighQuality();
+	public List<BikeShopVO> rentBikeMiddleQuality();
+	public List<BikeShopVO> rentBikeLowQuality();
 
-	public void returnBike(int index, BikeVO bikeVO);
-
-	public void setList(BikeVO bikeVO);
-
-	public List<BikeVO> getList();
-
+	public List<BikeShopVO> returnBikeHighQuality(int pay);
+	public List<BikeShopVO> returnBikeMiddleQuality(int pay);
+	public List<BikeShopVO> returnBikeLowQuality(int pay);
+	
+	public List<BikeShopVO> showList();
 }
