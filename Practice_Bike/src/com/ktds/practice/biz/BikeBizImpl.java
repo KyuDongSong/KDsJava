@@ -1,6 +1,5 @@
 package com.ktds.practice.biz;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -63,19 +62,19 @@ public class BikeBizImpl implements BikeBiz {
 	private void showList() {
 		List<BikeShopVO> bikeList = bikeDao.showList();
 
-		System.out.println("========== Shop ==========");
+		System.out.println("============ Shop ============");
 		System.out.println("고급: " + bikeList.get(0).getStockOfHighQuality());
 		System.out.println("중급: " + bikeList.get(0).getStockOfMiddleQuality());
 		System.out.println("기본: " + bikeList.get(0).getStockOfLowQuality());
 		System.out.println("돈: " + bikeList.get(0).getMoney());
-		System.out.println("==========================");
+		System.out.println("==============================");
 
 		System.out.println("========== Customer ==========");
 		System.out.println("고급: " + bikeList.get(1).getStockOfHighQuality());
 		System.out.println("중급: " + bikeList.get(1).getStockOfMiddleQuality());
 		System.out.println("기본: " + bikeList.get(1).getStockOfLowQuality());
 		System.out.println("돈: " + bikeList.get(1).getMoney());
-		System.out.println("==========================");
+		System.out.println("==============================");
 	}
 
 }

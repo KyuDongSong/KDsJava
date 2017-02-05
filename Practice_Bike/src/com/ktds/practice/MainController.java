@@ -17,11 +17,11 @@ public class MainController {
 		System.out.println("========== Welcome To BikeRentalShop ==========");
 		System.out.println("자전거 선택(1. 고급 / 2. 중급 / 3. 기본)");
 		int choice = input.nextInt();
-		bikeBiz.choiceQuality(choice);
 
 		System.out.println("대여 시간을 입력하세요.");
 		int time = input.nextInt();
 
+		bikeBiz.choiceQuality(choice);
 		bikeBiz.returnBike(choice, time);
 		
 		input.close();
