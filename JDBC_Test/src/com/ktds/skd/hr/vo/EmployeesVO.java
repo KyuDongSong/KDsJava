@@ -1,18 +1,41 @@
 package com.ktds.skd.hr.vo;
 
+import com.ktds.skd.dao.support.annotation.Types;
+
 public class EmployeesVO {
+	
+	@Types
 	private int employeeId;
+	
+	@Types
 	private int salary;
+	
+	@Types
 	private int managerId;
+	
+	@Types
 	private int departmentId;
 
+	@Types
 	private String firstName;
+
+	@Types
 	private String lastName;
+
+	@Types
 	private String hireDate; // Date type�� String
+
+	@Types
 	private String email;
+	
+	@Types
 	private String phoneNumber;
+
+	@Types
 	private String jobId;
 
+
+	@Types
 	private double commissionPct;
 
 	private DepartmentsVO departments; // 한 사원이 부서의 정보를 가지고 있다. 조인표현 방법.

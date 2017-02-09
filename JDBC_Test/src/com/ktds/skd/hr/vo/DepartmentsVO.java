@@ -1,10 +1,33 @@
 package com.ktds.skd.hr.vo;
 
+import com.ktds.skd.dao.support.annotation.Types;
+
 public class DepartmentsVO {
+
+	@Types(alias = "D_DEPARTMENT_ID")
 	private int departmentId;
+
+	@Types
 	private String dapartmentName;
+
+	@Types(alias = "D_MANAGER_ID")
 	private int managerId;
+
+	@Types
 	private int locationId;
+
+	private LocationVO locations;
+
+	public LocationVO getLocationVO() {
+		if (locations == null) {
+			locations = new LocationVO();
+		}
+		return locations;
+	}
+
+	public void setLocationVO(LocationVO locationVO) {
+		this.locations = locationVO;
+	}
 
 	public int getDepartmentId() {
 		return departmentId;
