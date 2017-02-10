@@ -92,7 +92,7 @@ public abstract class JDBCDaoSupport {
 	}
 
 	private Connection getConnection() throws SQLException {
-		String oracleUrl = "jdbc:oracle:thin:@localhost:1521:XE";
+		String oracleUrl = "jdbc:oracle:thin:@192.168.1.159:1521:XE";
 		return DriverManager.getConnection(oracleUrl, "HR", "hr");
 	}
 

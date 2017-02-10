@@ -12,7 +12,7 @@ public class HRController {
 		// hrBiz.printAllDepartmentsWithLocations();
 		// hrBiz.printAllCountriesWithRegions();
 		// hrBiz.printOneEmployees(200);
-		hrBiz.printAllEmployeesWithDepartmentsAndJobs();
+		//hrBiz.printAllEmployeesWithDepartmentsAndJobs();
 
 	}
 
