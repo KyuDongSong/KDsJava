@@ -33,8 +33,8 @@ public class BookStoreDaoImpl extends JDBCDaoSupport implements BookStoreDao {
 			@Override
 			public Object getData(ResultSet rs) {
 				BookStoreVO bookStoreVO = new BookStoreVO();
-				BindData.bindData(rs, bookStoreVO);
 				BindData.bindData(rs, bookStoreVO.getBooks());
+				BindData.bindData(rs, bookStoreVO);
 
 				return bookStoreVO;
 			}
