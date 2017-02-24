@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/ktds/skd/board/board/biz/BoardBiz.java=UTF-8
+encoding//src/main/java/com/ktds/skd/board/board/dao/BoardDao.java=UTF-8
+encoding//src/main/java/com/ktds/skd/board/board/web/WriteServlet.java=UTF-8
+encoding//src/main/java/com/ktds/skd/board/controller/BoardController.java=UTF-8
+encoding//src/main/java/com/ktds/skd/dao/support/JDBCDaoSupport.java=UTF-8
+encoding//src/main/java/com/ktds/skd/dao/support/QueryHandler.java=UTF-8
+encoding//src/main/java/com/ktds/skd/dao/support/annotation/BindData.java=UTF-8
