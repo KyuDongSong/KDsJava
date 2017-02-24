@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -21,13 +20,10 @@ public class CheckLoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		HttpServletRequest req = ((HttpServletRequest) request);
-		HttpServletResponse res = ((HttpServletResponse) response);
-		
-		HttpSession session = req.getSession();
+		HttpSession session = ((HttpServletRequest) request).getSession();
 
-		if (session.getAttribute("userId") == null) {
-			res.sendRedirect("/user/signIn");
+		if (session.getAttribute("_USER_") == null) {
+			((HttpServletResponse) response).sendRedirect("/board/user/signUp");
 		} else {
 			// pass the request along the filter chain
 			chain.doFilter(request, response);
