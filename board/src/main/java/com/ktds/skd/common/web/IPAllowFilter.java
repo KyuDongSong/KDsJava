@@ -19,7 +19,6 @@ public class IPAllowFilter implements Filter {
 		for (int i = 0; i < allowIPs.length; i++) {
 			allowIPs[i] = allowIPs[i].trim();
 		}
-
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
