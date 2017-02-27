@@ -29,7 +29,7 @@
 				<td>
 					<a href="/board/detail?boardId=${article.boardId}">${article.subject}</a>
 				</td>
-				<td>${article.writer}</td>
+				<td>${article.user.userName}(${article.writer})</td>
 				<td>${article.writeDate}</td>
 				<td>${article.likeCount}</td>
 			</tr>

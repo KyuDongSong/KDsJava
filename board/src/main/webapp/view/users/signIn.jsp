@@ -13,5 +13,6 @@
 		<input type="password" name="userPassword" placeholder="Input PWD"/> <br/>
 		<input type="submit" value="SingIn"/>
 	</form>
+	<a href="/board/user/signUp">회원가입</a>
 </body>
 </html>

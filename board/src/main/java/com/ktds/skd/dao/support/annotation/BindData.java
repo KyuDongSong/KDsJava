@@ -14,13 +14,34 @@ public class BindData {
 
 	private static List<String> columnNames;
 	private static List<String> typesFieldNames;
+	private static List<Class> primitive;
+
+	static {
+		primitive = new ArrayList<Class>();
+		primitive.add(byte.class);
+		primitive.add(short.class);
+		primitive.add(int.class);
+		primitive.add(long.class);
+		primitive.add(double.class);
+		primitive.add(float.class);
+		primitive.add(char.class);
+		primitive.add(boolean.class);
+		primitive.add(String.class);
+	}
+
+	public static void startBind(ResultSet rs, Object obj) {
+		Field[] fields = obj.getClass().getDeclaredFields();
+		checkColumns(rs, fields, obj);
+		bindData(rs, obj);
+
+		typesFieldNames.clear();
+		columnNames.clear();
+	}
 
 	public static void bindData(ResultSet rs, Object obj) {
 
 		Field[] fields = obj.getClass().getDeclaredFields();
 		Method[] methods = obj.getClass().getDeclaredMethods();
-
-		checkColumns(rs, fields, obj);
 
 		String column = "";
 		String fieldName = "";
@@ -34,36 +55,40 @@ public class BindData {
 			fieldName = field.getName();
 			fieldType = field.getType();
 			for (Annotation annotation : annotataions) {
-				if ( annotation.annotationType() == Types.class ) {
+				if (annotation.annotationType() == Types.class) {
 					requires = ((Types) annotation).requires();
 					column = getFieldName(((Types) annotation).alias(), fieldName, rs);
 
 					for (Method method : methods) {
-						if(method.getName().toUpperCase().equals("SET" + fieldName.toUpperCase())) {
-							if(fieldType == int.class) {
+						if (method.getName().toUpperCase().equals("SET" + fieldName.toUpperCase())) {
+							if (fieldType == int.class) {
 								try {
 									method.invoke(obj, rs.getInt(column));
-								} catch (SQLException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-									if(requires) {
-										throw new RuntimeException(e.getMessage() + " / field name["+fieldName+"], column name["+column+"]", e);
+								} catch (SQLException | IllegalAccessException | IllegalArgumentException
+										| InvocationTargetException e) {
+									if (requires) {
+										throw new RuntimeException(e.getMessage() + " / field name[" + fieldName
+												+ "], column name[" + column + "]", e);
 									}
 								}
-							}
-							else if ( fieldType == double.class ) {
+							} else if (fieldType == double.class) {
 								try {
 									method.invoke(obj, rs.getDouble(column));
-								} catch (SQLException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-									if(requires) {
-										throw new RuntimeException(e.getMessage() + " / field name["+fieldName+"], column name["+column+"]", e);
+								} catch (SQLException | IllegalAccessException | IllegalArgumentException
+										| InvocationTargetException e) {
+									if (requires) {
+										throw new RuntimeException(e.getMessage() + " / field name[" + fieldName
+												+ "], column name[" + column + "]", e);
 									}
 								}
-							}
-							else if ( fieldType == String.class ) {
+							} else if (fieldType == String.class) {
 								try {
 									method.invoke(obj, rs.getString(column));
-								} catch (SQLException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-									if(requires) {
-										throw new RuntimeException(e.getMessage() + " / field name["+fieldName+"], column name["+column+"]", e);
+								} catch (SQLException | IllegalAccessException | IllegalArgumentException
+										| InvocationTargetException e) {
+									if (requires) {
+										throw new RuntimeException(e.getMessage() + " / field name[" + fieldName
+												+ "], column name[" + column + "]", e);
 									}
 								}
 							}
@@ -94,19 +119,16 @@ public class BindData {
 	}
 
 	private static void checkColumns(ResultSet rs, Field[] fields, Object obj) {
-		try {
-			if(rs.isFirst()) {
-				columnNames = getColumnNames(rs);
-				typesFieldNames = getTypesFieldNames(fields, rs);
+		if (typesFieldNames == null || typesFieldNames.isEmpty()) {
+			columnNames = getColumnNames(rs);
+			typesFieldNames = getTypesFieldNames(fields, rs);
 
-				for (String columnName : columnNames) {
-					if (!typesFieldNames.contains(columnName)) {
-						throw new RuntimeException("[" + obj.getClass().getSimpleName() + "]�뿉�꽌 [" + columnName + "]�뿉 �빐�떦�릺�뒗 @Types瑜� 李얠� 紐삵뻽�뒿�땲�떎.");
-					}
+			for (String columnName : columnNames) {
+				if (!typesFieldNames.contains(columnName)) {
+					throw new RuntimeException(
+							"[" + obj.getClass().getSimpleName() + "]에서 [" + columnName + "]에 해당되는 @Types를 찾지 못했습니다.");
 				}
 			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
 
@@ -117,7 +139,7 @@ public class BindData {
 			int columnCount = metaData.getColumnCount();
 
 			for (int i = 0; i < columnCount; i++) {
-				columnNames.add(metaData.getColumnLabel(i+1));
+				columnNames.add(metaData.getColumnLabel(i + 1));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
@@ -137,6 +159,16 @@ public class BindData {
 		for (Field field : fields) {
 			annotataions = field.getDeclaredAnnotations();
 			fieldName = field.getName();
+
+			if (!primitive.contains(field.getType())) {
+				try {
+					typesFieldNames.addAll(
+							getTypesFieldNames(field.getType().newInstance().getClass().getDeclaredFields(), rs));
+				} catch (InstantiationException | IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+
 			for (Annotation annotation : annotataions) {
 				if (annotation.annotationType() == Types.class) {
 					column = getFieldName(((Types) annotation).alias(), fieldName, rs);
@@ -150,14 +182,12 @@ public class BindData {
 
 	private static String getFieldName(String column, String fieldName, ResultSet rs) {
 		try {
-			if(column.length() > 0) {
+			if (column.length() > 0) {
 				rs.getString(column);
-			}
-			else {
+			} else {
 				column = convertString(fieldName);
 			}
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			column = convertString(fieldName);
 		}
 

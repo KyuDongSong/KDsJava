@@ -39,9 +39,9 @@ public class DoSignUpActionServlet extends HttpServlet {
 		usersVO.setUserName(userName);
 
 		if (userBiz.addMember(usersVO)) {
-			response.sendRedirect("/user/signIn");
+			response.sendRedirect("/board/user/signIn");
 		} else {
-			response.sendRedirect("/user/signIn");
+			response.sendRedirect("/board/user/signIn");
 		}
 	}
 }

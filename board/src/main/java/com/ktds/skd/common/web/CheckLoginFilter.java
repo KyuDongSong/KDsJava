@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.skd.board.board.user.vo.UsersVO;
+
 public class CheckLoginFilter implements Filter {
 
 	public void destroy() {
@@ -23,11 +25,12 @@ public class CheckLoginFilter implements Filter {
 		HttpSession session = ((HttpServletRequest) request).getSession();
 
 		if (session.getAttribute("_USER_") == null) {
-			((HttpServletResponse) response).sendRedirect("/board/user/signUp");
+			((HttpServletResponse) response).sendRedirect("/board/user/signIn");
 		} else {
 			// pass the request along the filter chain
 			chain.doFilter(request, response);
 		}
+
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

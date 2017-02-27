@@ -52,8 +52,8 @@ public class DoWriteActionServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UsersVO user = (UsersVO) session.getAttribute("_USER_");
 
-		String writer = user.getUserName() + "(" + request.getRemoteAddr() + ")";
-		boardVO.setWriter(writer);
+		boardVO.setWriter(user.getUserId());
+		boardVO.setIp(request.getRemoteAddr());
 		boardVO.setSubject(subject);
 		boardVO.setContent(content);
 

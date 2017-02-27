@@ -1,5 +1,6 @@
 package com.ktds.skd.board.board.vo;
 
+import com.ktds.skd.board.board.user.vo.UsersVO;
 import com.ktds.skd.dao.support.annotation.Types;
 
 /**
@@ -20,6 +21,29 @@ public class BoardVO {
 	private String likeCount;
 	@Types
 	private String writeDate;
+	@Types
+	private String ip;
+
+	private UsersVO user;
+
+	public UsersVO getUser() {
+		if (user == null) {
+			user = new UsersVO();
+		}
+		return user;
+	}
+
+	public void setUser(UsersVO user) {
+		this.user = user;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 
 	public int getBoardId() {
 		return boardId;

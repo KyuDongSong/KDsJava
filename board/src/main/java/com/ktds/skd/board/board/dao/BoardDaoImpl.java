@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.ktds.skd.board.board.user.vo.UsersVO;
 import com.ktds.skd.board.board.vo.BoardVO;
 import com.ktds.skd.dao.support.JDBCDaoSupport;
 import com.ktds.skd.dao.support.QueryHandler;
@@ -28,11 +29,13 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
 				query.append("                          , SUBJECT ");
 				query.append("                          , CONTENT ");
 				query.append("                          , WRITER ");
+				query.append("        					, IP ");
 				query.append("                          , LIKE_COUNT ");
 				query.append("                          , WRITE_DATE ");
 				query.append("                         ) ");
 				query.append(" VALUES                  ( ");
 				query.append("                              BOARD_ID_SEQ.NEXTVAL ");
+				query.append("                              , ? ");
 				query.append("                              , ? ");
 				query.append("                              , ? ");
 				query.append("                              , ? ");
@@ -48,6 +51,7 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
 				stmt.setString(1, boardVO.getSubject());
 				stmt.setString(2, boardVO.getContent());
 				stmt.setString(3, boardVO.getWriter());
+				stmt.setString(4, boardVO.getIp());
 			}
 
 			@Override
@@ -64,13 +68,19 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
 			@Override
 			public String preparedQuery() {
 				StringBuffer query = new StringBuffer();
-				query.append(" SELECT    BOARD_ID ");
-				query.append("          , SUBJECT ");
-				query.append("          , CONTENT ");
-				query.append("          , WRITER ");
-				query.append("          , LIKE_COUNT ");
-				query.append("          , WRITE_DATE ");
-				query.append(" FROM      BOARD ");
+				query.append(" SELECT   B.BOARD_ID ");
+				query.append("          , B.SUBJECT ");
+				query.append("          , B.CONTENT ");
+				query.append("          , B.WRITER ");
+				query.append("          , B.LIKE_COUNT ");
+				query.append("          , B.WRITE_DATE ");
+				query.append("          , B.IP ");
+				query.append("          , U.USR_ID ");
+				query.append("          , U.USR_NM ");
+				query.append("          , U.JOIN_DT ");
+				query.append(" FROM     BOARD B");
+				query.append("          , USRS U");
+				query.append(" WHERE    B.WRITER = U.USR_ID ");
 				query.append(" ORDER	BY BOARD_ID DESC");
 				return query.toString();
 			}
@@ -85,6 +95,10 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
 
 				BoardVO boardVO = new BoardVO();
 				BindData.bindData(rs, boardVO);
+				
+				UsersVO usersVO = boardVO.getUser();
+				BindData.bindData(rs, usersVO);
+
 				return boardVO;
 			}
 		});
@@ -96,14 +110,20 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
 			@Override
 			public String preparedQuery() {
 				StringBuffer query = new StringBuffer();
-				query.append(" SELECT   BOARD_ID");
-				query.append("          , SUBJECT ");
-				query.append("          , CONTENT ");
-				query.append("          , WRITER ");
-				query.append("          , LIKE_COUNT ");
-				query.append("          , WRITE_DATE ");
-				query.append(" FROM     BOARD ");
-				query.append(" WHERE    BOARD_ID = ? ");
+				query.append(" SELECT   B.BOARD_ID ");
+				query.append("          , B.SUBJECT ");
+				query.append("          , B.CONTENT ");
+				query.append("          , B.WRITER ");
+				query.append("          , B.LIKE_COUNT ");
+				query.append("          , B.WRITE_DATE ");
+				query.append("          , B.IP ");
+				query.append("          , U.USR_ID ");
+				query.append("          , U.USR_NM ");
+				query.append("          , U.JOIN_DT ");
+				query.append(" FROM     BOARD B");
+				query.append("          , USRS U");
+				query.append(" WHERE    B.WRITER = U.USR_ID ");
+				query.append(" AND	    BOARD_ID = ? ");
 
 				return query.toString();
 			}
@@ -117,6 +137,10 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
 			public Object getData(ResultSet rs) {
 				BoardVO boardVO = new BoardVO();
 				BindData.bindData(rs, boardVO);
+				
+				UsersVO usersVO = boardVO.getUser();
+				BindData.bindData(rs, usersVO);
+
 				return boardVO;
 			}
 		});
