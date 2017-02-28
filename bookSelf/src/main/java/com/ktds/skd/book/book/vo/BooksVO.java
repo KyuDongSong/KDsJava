@@ -1,4 +1,4 @@
-package com.ktds.skd.book.vo;
+package com.ktds.skd.book.book.vo;
 
 public class BooksVO {
 

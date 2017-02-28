@@ -1,9 +1,9 @@
-package com.ktds.skd.book.biz;
+package com.ktds.skd.book.book.biz;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import com.ktds.skd.book.vo.BooksVO;
+import com.ktds.skd.book.book.vo.BooksVO;
 
 public interface BookBiz {
 

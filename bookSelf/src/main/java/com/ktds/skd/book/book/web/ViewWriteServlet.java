@@ -1,4 +1,4 @@
-package com.ktds.skd.book.web;
+package com.ktds.skd.book.book.web;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ public class ViewWriteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/write.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/book/write.jsp");
 		dispatcher.forward(request, response);
 	}
 

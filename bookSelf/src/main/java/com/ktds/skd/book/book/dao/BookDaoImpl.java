@@ -1,4 +1,4 @@
-package com.ktds.skd.book.dao;
+package com.ktds.skd.book.book.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ktds.skd.book.vo.BooksVO;
+import com.ktds.skd.book.book.vo.BooksVO;
 
 public class BookDaoImpl implements BookDao {
 

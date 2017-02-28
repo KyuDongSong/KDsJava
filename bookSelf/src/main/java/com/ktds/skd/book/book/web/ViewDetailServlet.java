@@ -1,4 +1,4 @@
-package com.ktds.skd.book.web;
+package com.ktds.skd.book.book.web;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ktds.skd.book.biz.BookBiz;
-import com.ktds.skd.book.biz.BookBizImpl;
-import com.ktds.skd.book.vo.BooksVO;
+import com.ktds.skd.book.book.biz.BookBiz;
+import com.ktds.skd.book.book.biz.BookBizImpl;
+import com.ktds.skd.book.book.vo.BooksVO;
 
 public class ViewDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class ViewDetailServlet extends HttpServlet {
 		BooksVO book = bookBiz.showOneBook(bookId);
 		request.setAttribute("book", book);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/detail.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/book/detail.jsp");
 		dispatcher.forward(request, response);
 	}
 

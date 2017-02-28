@@ -13,7 +13,7 @@
     <description></description>
     <display-name>ViewListServlet</display-name>
     <servlet-name>ViewListServlet</servlet-name>
-    <servlet-class>com.ktds.skd.book.web.ViewListServlet</servlet-class>
+    <servlet-class>com.ktds.skd.book.book.web.ViewListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewListServlet</servlet-name>
@@ -32,7 +32,7 @@
     <description></description>
     <display-name>DoWriteActionServlet</display-name>
     <servlet-name>DoWriteActionServlet</servlet-name>
-    <servlet-class>com.ktds.skd.book.web.DoWriteActionServlet</servlet-class>
+    <servlet-class>com.ktds.skd.book.book.web.DoWriteActionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DoWriteActionServlet</servlet-name>
@@ -42,7 +42,7 @@
     <description></description>
     <display-name>ViewDetailServlet</display-name>
     <servlet-name>ViewDetailServlet</servlet-name>
-    <servlet-class>com.ktds.skd.book.web.ViewDetailServlet</servlet-class>
+    <servlet-class>com.ktds.skd.book.book.web.ViewDetailServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewDetailServlet</servlet-name>
@@ -52,7 +52,7 @@
     <description></description>
     <display-name>ViewWriteServlet</display-name>
     <servlet-name>ViewWriteServlet</servlet-name>
-    <servlet-class>com.ktds.skd.book.web.ViewWriteServlet</servlet-class>
+    <servlet-class>com.ktds.skd.book.book.web.ViewWriteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewWriteServlet</servlet-name>
@@ -62,7 +62,7 @@
     <description></description>
     <display-name>DoModifyActionServlet</display-name>
     <servlet-name>DoModifyActionServlet</servlet-name>
-    <servlet-class>com.ktds.skd.book.web.DoModifyActionServlet</servlet-class>
+    <servlet-class>com.ktds.skd.book.book.web.DoModifyActionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DoModifyActionServlet</servlet-name>
@@ -72,7 +72,7 @@
     <description></description>
     <display-name>ViewModifyServlet</display-name>
     <servlet-name>ViewModifyServlet</servlet-name>
-    <servlet-class>com.ktds.skd.book.web.ViewModifyServlet</servlet-class>
+    <servlet-class>com.ktds.skd.book.book.web.ViewModifyServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewModifyServlet</servlet-name>
@@ -82,10 +82,30 @@
     <description></description>
     <display-name>DoDeleteActionServlet</display-name>
     <servlet-name>DoDeleteActionServlet</servlet-name>
-    <servlet-class>com.ktds.skd.book.web.DoDeleteActionServlet</servlet-class>
+    <servlet-class>com.ktds.skd.book.book.web.DoDeleteActionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DoDeleteActionServlet</servlet-name>
     <url-pattern>/doDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewSignUpServlet</display-name>
+    <servlet-name>ViewSignUpServlet</servlet-name>
+    <servlet-class>com.ktds.skd.book.users.web.ViewSignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSignUpServlet</servlet-name>
+    <url-pattern>/users/signUp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSignUpActionServlet</display-name>
+    <servlet-name>DoSignUpActionServlet</servlet-name>
+    <servlet-class>com.ktds.skd.book.users.web.DoSignUpActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSignUpActionServlet</servlet-name>
+    <url-pattern>/users/doSignUp</url-pattern>
   </servlet-mapping>
 </web-app>
