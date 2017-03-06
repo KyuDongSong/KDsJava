@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+
+.grid, .login {
+	/*
+		border : 1px solid;
+		border : 1px dotted;
+		border : 1px dashed;
+	    grid , login 1px씩 줄이기.
+	*/
+	border : 1px solid #DDDDDD;
+}
+
+.grid {
+	/*넓이: 714px*/
+	width : 709px;
+	
+	/*margin -right를 주석처리하면, 다시 붙는다. 왜 margin이 추가적으로 붙었을까?*/
+	margin-right: 3px;
+	/*list.jsp의 login, grid 사이의 space를 표현함*/
+	
+	/*인라인 블럭으로 만들어야한다. span, a 태그처럼 contents만큼만 먹는 블럭으로 바뀐다.*/
+	display: inline-block;
+	/*background-color: red;*/
+}
+
+/*711 + 3 + 250 = 964px
+윈도우 space : 4px
+맥 space : 3px
+*/
+
+.login {
+	/*수직정렬*/
+	vertical-align: top;
+	width: 248px;
+	/*background-color: #00FFFF;*/
+	display: inline-block;
+}

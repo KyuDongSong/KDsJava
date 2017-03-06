@@ -136,16 +136,6 @@
     <servlet-name>ViewSignInServlet</servlet-name>
     <url-pattern>/user/signIn</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>IndexServlet</display-name>
-    <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>com.ktds.skd.board.board.IndexServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>IndexServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
   <filter>
     <display-name>CheckLoginFilter</display-name>
     <filter-name>CheckLoginFilter</filter-name>
@@ -183,4 +173,14 @@
     <filter-name>CheckLoginFilter</filter-name>
     <url-pattern>/doModify</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoLogoutActionServlet</display-name>
+    <servlet-name>DoLogoutActionServlet</servlet-name>
+    <servlet-class>com.ktds.skd.board.board.user.web.DoLogoutActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoLogoutActionServlet</servlet-name>
+    <url-pattern>/doLogout</url-pattern>
+  </servlet-mapping>
 </web-app>

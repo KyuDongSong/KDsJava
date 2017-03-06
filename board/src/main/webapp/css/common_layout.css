@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+
+
+* {
+	/*제일위에 있는 것이 제일 우선순위. cascading*/
+	color: #333333;
+}
+
+div, input, td, th, span, a, p, textarea, li, button, dt, dl dd, ul, ol, body {
+	font-size: 9pt;
+}
+
+#wrapper {
+	width : 964px;
+	overflow: hidden;
+	margin : 0 auto; /*위아래 마진은 0 양옆의(side) 마진을 서로 나눠서 적용. 즉, 가운데로 */
+}
+
+#nav {
+	width : 100%;
+	background-color: #55CC55;
+	/*사방으로 10px주는데, 왼쪽은 15px 준다. (= 덮어쓰기)*/
+	padding: 10px;
+	padding-left: 15px;
+	margin-bottom: 3px;
+	font-size: 9pt;
+}
+
+#nav > a {
+	color: #FFFF00;
+	font-weight: bold;
+	font-size: 11pt;
+}
+
+#content {
+	width: 100% /*사이즈를 wrapper랑 딱 맞춰라.*/
+}
+
+
+body {
+	margin : 0px;
+}
+
+table{
+	/*100퍼센트 설정: .grid에서 711px만큼 딱 쓰겠다.*/
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th {
+	text-align: center;
+	font-weight: bold; 
+	/*제일 좋은 color, 약간 회색, 너무 텍스트만 강조되어서 레이아웃이 이쁘지 않음.*/
+	/*color : #333333;*/
+	background-color: powderblue;
+	font-size: 9pt;
+	padding : 6px;
+}
+
+td {
+	padding: 6px;
+	font-size: 9pt;
+}

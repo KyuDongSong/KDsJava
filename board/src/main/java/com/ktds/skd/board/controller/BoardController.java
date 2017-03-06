@@ -42,7 +42,7 @@ public class BoardController {
     }
 
     public void printAllArticles() {
-        List<BoardVO> articles = boardBiz.getAllArticles();
+    /*    List<BoardVO> articles = boardBiz.getAllArticles();
 
         for (BoardVO article : articles) {
             System.out.printf("湲� 踰덊샇: %d\n", article.getBoardId());
@@ -50,7 +50,7 @@ public class BoardController {
             System.out.printf("湲� �옉�꽦�옄: %s\n", article.getWriter());
             System.out.printf("湲� �옉�꽦�씪: %s\n", article.getWriteDate());
             System.out.println("=======================================");
-        }
+        }*/
     }
 
     public void printOneArticle(int boardId){

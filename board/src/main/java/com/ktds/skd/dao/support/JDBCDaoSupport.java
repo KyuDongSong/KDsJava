@@ -76,7 +76,6 @@ public abstract class JDBCDaoSupport {
 
         loadOracleDriver();
 
-        // 2. JDBC Instance �깮�꽦
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -84,18 +83,15 @@ public abstract class JDBCDaoSupport {
         try {
             conn = getConnection();
 
-            // Query �깮�꽦�븯湲�..
             String query = queryHandler.preparedQuery();
             stmt = conn.prepareStatement(query);
 
-            // �뙆�씪誘명꽣 留듯븨�븯湲�
             queryHandler.mappingParameters(stmt);
 
             rs = stmt.executeQuery();
 
             Object result = null;
             if (rs.next()) {
-                // ROW 媛앹껜 �깮�꽦�븯湲�
                 result = queryHandler.getData(rs);
             }
 
@@ -109,7 +105,6 @@ public abstract class JDBCDaoSupport {
     }
 
     private void loadOracleDriver() {
-        // 1. Oracle Driver Loading.
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
         } catch (ClassNotFoundException e) {
