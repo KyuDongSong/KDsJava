@@ -3,16 +3,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/templet/common_header.jsp" />
 <link rel = "stylesheet" type = "text/css" href = "/board/css/write_layout.css" /> 
-
-
-	<!--  4개의 엘리먼트 -->
+<script type="text/javascript" src="./jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		$("#writeForm").find("input[type=button]").click(function(){
+			//$("#writeForm").attr("method", "post");
+			//$("#writeForm").attr("action", "/board/doWrite");
+			$("#writeForm").attr({
+				"method" : "post",
+				"action" : "/board/doWrite"
+			});
+			$("#writeForm").submit();
+		});
+		
+		$("#writeForm").find("img").click(function(){
+			$.post("/board/doWrite", {
+				"subject" : $(".subjects").val(),
+				"content" : $(".contents").val()
+			}, function(response){
+				alert("Write Success!!");
+			});
+		});
+		
+	});
+</script>
 
 	<h1>글쓰기</h1>
-	<!-- 네이버로 이동.
-	<scripts>location.href = "http://www.naver.com"</scripts> -->
-	<!-- <MARQUEE direction=up behavior=alternate height=40> -->
 	<hr />
-	<!-- 가로 선 -->
 
 	<!-- /board/doWrite로 정보를 writer / subject / content로 보내라. 
 		전달되는 애들 parameter(request에 있는 것): writer, subject, content
@@ -40,14 +57,25 @@
 	<!-- 이제 로그인을 할 수 있으니, 작성자를 없애겠다. -->
 	
 	<div class = "write">
+	<!-- jquery와 ajax를 이용하면 form 에서 method와 action을 적지 않는다. // submit도 button이나 img로 -->
+	<!-- 	
 	<form method = "post" action="/board/doWrite">
-		<!-- 주석: ctrl + shift + /
-		<input type="text" name="writer" placeholder="이름을 입력하세요." /><br />  -->
+		<input type="text" name="writer" placeholder="이름을 입력하세요." /><br /> 
 		<input
 			type="text" name="subject" placeholder="제목을 입력하세요" /><br />
 		<textarea name="content" placeholder="내용을 입력하세요."></textarea>
 		<input type="submit" value="글쓰기" />
-	</form>
+	</form> 
+	-->
+	<!-- jquery, ajax 스타일 -->
+	<form id="writeForm">
+		<input type="text" name="writer" placeholder="이름을 입력하세요." /><br /> 
+		<input
+			type="text" class="subjects" name="subject" placeholder="제목을 입력하세요" /><br />
+		<textarea name="content" class="contents" placeholder="내용을 입력하세요."></textarea>
+		<input type="button" value="글쓰기" />
+		<img src="/board/img/ic_note_add_black_24dp_2x.png"/>
+	</form> 
 	</div><!--  
 			
 --><div class="login">

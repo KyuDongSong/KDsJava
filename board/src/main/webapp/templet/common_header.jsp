@@ -8,6 +8,7 @@
 <!-- href: 절대 경로 적기. (= url 적듯이) -->
 <!-- 광범위한 css부터 쓰기. Import의 순서에 따라 UI가 달라진다. -->
 <link rel="stylesheet" type="text/css" href="/board/css/common_layout.css">
+<script type="text/javascript" src="/board/js/jquery-3.1.1.min.js"></script>
 
 </head>
 <body>
